@@ -16,9 +16,6 @@ typedef struct {
 } MonstType;
 
 // Specifying three monster types to start with.
-// Feel free to add more, or change the below
-// Note that it is up to you to decide whether to use this array from createMonsters
-// you may or may not use it
 const MonstType types[] = {
     { "Goblin", 'G', 6, 10},
     { "Rat", 'R', 3, 5},
@@ -51,20 +48,15 @@ void attackPunch(Game *game, Creature *monst) {
 }
 
 
-
-/* Exercise (c)
- *
+/*
  * Move monster 'monst' towards the player character.
- * See exercise description for more detailed rules.
  */
 int isCloserToPlayer(const Game *game, int x_current, int y_current, int x_pp, int y_pp)
 {
-    // vi vill jämföra två avstånd
-    
     return (abs(game->position.x - x_pp) + abs(game->position.y - y_pp) < abs(game->position.x - x_current) + abs(game->position.y - y_current))? 1 : 0;
 }
-// kollar om möjlig position är densamma som spelarens position
-// returnerar 1 ifall det inte är och 0 om spelaren finns där
+
+
 int isOnTopOfPlayer(const Game *game, int x, int y)
 {
     return(game->position.x == x && game->position.y == y) ? 1 : 0;
@@ -88,10 +80,8 @@ void moveTowards(const Game *game, Creature *monst) {
     
 }
 
-/* Exercise (d)
- *
+/* 
  * Move monster 'monst' away from the player character.
- * See exercise description for more detailed rules.
  */
 void moveAway(const Game *game, Creature *monst) {
 
@@ -115,8 +105,7 @@ void moveAway(const Game *game, Creature *monst) {
 
 
 
-/* Exercise (e)
- *
+/* 
  * Take action on each monster (that is alive) in 'monsters' array.
  * Each monster either attacks or moves (or does nothing if no action is specified)
  */
@@ -141,11 +130,9 @@ void monsterAction(Game *game) {
 
 
 
-/* Exercise (b)
- *
+/*
  * Create opts.numMonsters monsters and position them on valid position
  * in the the game map. The moster data (hitpoints, name, map sign) should be
- * set appropriately (see exercise instructions) 
  */
 void createMonsters(Game *game) {
     (void) game;
